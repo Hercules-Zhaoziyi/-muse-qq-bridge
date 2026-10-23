@@ -1,0 +1,15 @@
+[Unit]
+Description=QQ 邮件桥：IMAP 轮询转发到 QQ
+After=network.target qq_push_relay.service
+Requires=qq_push_relay.service
+
+[Service]
+Type=simple
+WorkingDirectory=/opt/qq-push
+EnvironmentFile=/opt/qq-push/.env
+ExecStart=/usr/bin/python3 /opt/qq-push/mail_poller.py
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target

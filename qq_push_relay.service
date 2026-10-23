@@ -1,0 +1,14 @@
+[Unit]
+Description=QQ 官方机器人消息推送中转服务
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/opt/qq-push
+EnvironmentFile=/opt/qq-push/.env
+ExecStart=/usr/bin/python3 /opt/qq-push/qq_official_relay.py
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
